@@ -58,8 +58,6 @@
 		22F9F8331C9B5E86005F634D /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				22F9F8371C9B5E86005F634D /* AppDelegate.h */,
-				22F9F8381C9B5E86005F634D /* AppDelegate.m */,
 				22F9F83A1C9B5E86005F634D /* ViewController.h */,
 				22F9F83B1C9B5E86005F634D /* ViewController.m */,
 				22F9F83D1C9B5E86005F634D /* Main.storyboard */,
@@ -74,6 +72,8 @@
 		22F9F8341C9B5E86005F634D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22F9F8371C9B5E86005F634D /* AppDelegate.h */,
+				22F9F8381C9B5E86005F634D /* AppDelegate.m */,
 				22F9F8351C9B5E86005F634D /* main.m */,
 			);
 			name = "Supporting Files";
