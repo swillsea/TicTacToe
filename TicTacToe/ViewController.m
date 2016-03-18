@@ -33,7 +33,7 @@
 }
 
 //creates method to give win condition comparison neater code
-- (NSString *) getButtonTitle: (UIButton*) button {
+- (NSString *) getButtonTitleState: (UIButton*) button {
     return [button titleForState:[button state]];
 }
 
@@ -52,7 +52,8 @@
         self.playerOneTurn = YES;
         self.whichPlayerLabel.text = @"O";
     }
-
+    
+    
     //sets win alert and resets to play again
     UIAlertController *whoWon = [UIAlertController alertControllerWithTitle:@"You Won" message:(@"%c", [sender titleForState:[sender state]]) preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *playAgain = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -70,29 +71,29 @@
 
     
     //defines win conditions and presents alert when won
-    if (       [[self getButtonTitle:self.button1] isEqualToString:[self getButtonTitle:self.button2]]
-            && [[self getButtonTitle:self.button2] isEqualToString:[self getButtonTitle:self.button3]]){
+    if (       [[self getButtonTitleState:self.button1] isEqualToString:[self getButtonTitleState:self.button2]]
+            && [[self getButtonTitleState:self.button2] isEqualToString:[self getButtonTitleState:self.button3]]){
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button4] isEqualToString:[self getButtonTitle:self.button5]]
-            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button6]]) {
+    } else if ([[self getButtonTitleState:self.button4] isEqualToString:[self getButtonTitleState:self.button5]]
+            && [[self getButtonTitleState:self.button5] isEqualToString:[self getButtonTitleState:self.button6]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button7] isEqualToString:[self getButtonTitle:self.button8]]
-            && [[self getButtonTitle:self.button8] isEqualToString:[self getButtonTitle:self.button9]]) {
+    } else if ([[self getButtonTitleState:self.button7] isEqualToString:[self getButtonTitleState:self.button8]]
+            && [[self getButtonTitleState:self.button8] isEqualToString:[self getButtonTitleState:self.button9]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button1] isEqualToString:[self getButtonTitle:self.button5]]
-            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button9]]) {
+    } else if ([[self getButtonTitleState:self.button1] isEqualToString:[self getButtonTitleState:self.button5]]
+            && [[self getButtonTitleState:self.button5] isEqualToString:[self getButtonTitleState:self.button9]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button3] isEqualToString:[self getButtonTitle:self.button5]]
-            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button7]]) {
+    } else if ([[self getButtonTitleState:self.button3] isEqualToString:[self getButtonTitleState:self.button5]]
+            && [[self getButtonTitleState:self.button5] isEqualToString:[self getButtonTitleState:self.button7]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button1] isEqualToString:[self getButtonTitle:self.button4]]
-            && [[self getButtonTitle:self.button4] isEqualToString:[self getButtonTitle:self.button7]]) {
+    } else if ([[self getButtonTitleState:self.button1] isEqualToString:[self getButtonTitleState:self.button4]]
+            && [[self getButtonTitleState:self.button4] isEqualToString:[self getButtonTitleState:self.button7]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button2] isEqualToString:[self getButtonTitle:self.button5]]
-            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button8]]) {
+    } else if ([[self getButtonTitleState:self.button2] isEqualToString:[self getButtonTitleState:self.button5]]
+            && [[self getButtonTitleState:self.button5] isEqualToString:[self getButtonTitleState:self.button8]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
-    } else if ([[self getButtonTitle:self.button3] isEqualToString:[self getButtonTitle:self.button6]]
-            && [[self getButtonTitle:self.button6] isEqualToString:[self getButtonTitle:self.button9]]) {
+    } else if ([[self getButtonTitleState:self.button3] isEqualToString:[self getButtonTitleState:self.button6]]
+            && [[self getButtonTitleState:self.button6] isEqualToString:[self getButtonTitleState:self.button9]]) {
                     [self presentViewController:whoWon animated:YES completion:nil];
     } else {
         
