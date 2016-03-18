@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property BOOL playerOneTurn;
 
+@property UIImage *buttonXImage;
+@property UIImage *buttonOImage;
+@property UIImage *buttonBlankImage;
+
 
 @end
 
@@ -30,6 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.playerOneTurn = YES;
+    self.buttonXImage = [UIImage imageNamed:@"X.png"];
+    self.buttonOImage = [UIImage imageNamed:@"O.png"];
+    self.buttonBlankImage = [UIImage imageNamed:@"blank.png"];
 }
 
 
@@ -37,60 +44,66 @@
 - (IBAction)onButtonTapped:(UIButton *)sender {
     
     if (self.playerOneTurn) {
-        [sender setTitle:@"O" forState:UIControlStateNormal];
-        [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [sender setImage:self.buttonOImage forState:UIControlStateNormal];
         self.playerOneTurn = NO;
-        self.whichPlayerLabel.text = @"X";
+        self.whichPlayerLabel.text = @"Turn of Player 2: X";
     } else {
-        [sender setTitle:@"X" forState:UIControlStateNormal];
-        [sender setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [sender setImage:self.buttonXImage forState:UIControlStateNormal];
         self.playerOneTurn = YES;
-        self.whichPlayerLabel.text = @"O";
+        self.whichPlayerLabel.text = @"Turn of Player 1: O";
     }
-
- UIAlertController *whoWon = [UIAlertController alertControllerWithTitle:@"You Won" message:(@"%@", self.whichPlayerLabel.text) preferredStyle:UIAlertControllerStyleAlert];
- UIAlertAction *playAgain = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
- [self.button1 setTitle:@" " forState:UIControlStateNormal];
- [self.button2 setTitle:@"  " forState:UIControlStateNormal];
- [self.button3 setTitle:@"   " forState:UIControlStateNormal];
- [self.button4 setTitle:@"    " forState:UIControlStateNormal];
- [self.button5 setTitle:@"     " forState:UIControlStateNormal];
- [self.button6 setTitle:@"      " forState:UIControlStateNormal];
- [self.button7 setTitle:@"       " forState:UIControlStateNormal];
- [self.button8 setTitle:@"        " forState:UIControlStateNormal];
- [self.button9 setTitle:@"         " forState:UIControlStateNormal];
- }];
- [whoWon addAction:playAgain];
- 
- if ([self.button1.titleLabel.text isEqualToString:self.button2.titleLabel.text] && [self.button1.titleLabel.text isEqualToString:self.button3.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button4.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button6.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button7.titleLabel.text isEqualToString:self.button8.titleLabel.text] && [self.button8.titleLabel.text isEqualToString:self.button9.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button1.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button9.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button3.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button7.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button1.titleLabel.text isEqualToString:self.button4.titleLabel.text] && [self.button4.titleLabel.text isEqualToString:self.button7.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button2.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button8.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button3.titleLabel.text isEqualToString:self.button6.titleLabel.text] && [self.button6.titleLabel.text isEqualToString:self.button9.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else {
- 
- }
-
-    
-
+    NSLog(@"%@", sender);
     
     
+    UIAlertController *whoWon = [UIAlertController alertControllerWithTitle:@"You Won" message:(@"%@", self.whichPlayerLabel.text) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *playAgain = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.button1 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button2 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button3 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button4 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button5 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button6 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button7 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button8 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        [self.button9 setImage:self.buttonBlankImage forState:UIControlStateNormal];
+        
+    }];
+    [whoWon addAction:playAgain];
     
-    //self.Button1.titleLabel.text == self.Button2.titleLabel.text == self.Button3.titleLabel.text
+    NSLog(@"this is working%d", [self.button1.imageView.image isEqual:self.button2.imageView.image]);
+    
+    
+    if (([self.button1.imageView.image isEqual:self.button2.imageView.image]) && (self.button2.imageView.image == self.button3.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button4.imageView.image == self.button5.imageView.image) && (self.button5.imageView.image == self.button6.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button7.imageView.image == self.button8.imageView.image) && (self.button8.imageView.image == self.button9.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button1.imageView.image == self.button5.imageView.image) && (self.button5.imageView.image == self.button9.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button3.imageView.image == self.button5.imageView.image) && (self.button5.imageView.image == self.button7.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button1.imageView.image == self.button4.imageView.image) && (self.button4.imageView.image == self.button7.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button2.imageView.image == self.button5.imageView.image) && (self.button5.imageView.image == self.button8.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ((self.button3.imageView.image == self.button6.imageView.image) && (self.button6.imageView.image == self.button9.imageView.image)) {
+        [self presentViewController:whoWon animated:YES completion:nil];
+    } else {
+        
+    }
     
     
 }
+
+
+
+
+    
+
+    
+
+
 
 
 @end
