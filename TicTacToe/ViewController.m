@@ -32,10 +32,15 @@
     self.playerOneTurn = YES;
 }
 
+//creates method to give win condition comparison neater code
+- (NSString *) getButtonTitle: (UIButton*) button {
+    return [button titleForState:[button state]];
+}
 
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
     
+    //sets the button values and changes player turn
     if (self.playerOneTurn) {
         [sender setTitle:@"O" forState:UIControlStateNormal];
         [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -48,49 +53,54 @@
         self.whichPlayerLabel.text = @"O";
     }
 
- UIAlertController *whoWon = [UIAlertController alertControllerWithTitle:@"You Won" message:(@"%@", self.whichPlayerLabel.text) preferredStyle:UIAlertControllerStyleAlert];
- UIAlertAction *playAgain = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
- [self.button1 setTitle:@" " forState:UIControlStateNormal];
- [self.button2 setTitle:@"  " forState:UIControlStateNormal];
- [self.button3 setTitle:@"   " forState:UIControlStateNormal];
- [self.button4 setTitle:@"    " forState:UIControlStateNormal];
- [self.button5 setTitle:@"     " forState:UIControlStateNormal];
- [self.button6 setTitle:@"      " forState:UIControlStateNormal];
- [self.button7 setTitle:@"       " forState:UIControlStateNormal];
- [self.button8 setTitle:@"        " forState:UIControlStateNormal];
- [self.button9 setTitle:@"         " forState:UIControlStateNormal];
- }];
- [whoWon addAction:playAgain];
- 
- if ([self.button1.titleLabel.text isEqualToString:self.button2.titleLabel.text] && [self.button1.titleLabel.text isEqualToString:self.button3.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button4.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button6.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button7.titleLabel.text isEqualToString:self.button8.titleLabel.text] && [self.button8.titleLabel.text isEqualToString:self.button9.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button1.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button9.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button3.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button7.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button1.titleLabel.text isEqualToString:self.button4.titleLabel.text] && [self.button4.titleLabel.text isEqualToString:self.button7.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button2.titleLabel.text isEqualToString:self.button5.titleLabel.text] && [self.button5.titleLabel.text isEqualToString:self.button8.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else if ([self.button3.titleLabel.text isEqualToString:self.button6.titleLabel.text] && [self.button6.titleLabel.text isEqualToString:self.button9.titleLabel.text]) {
- [self presentViewController:whoWon animated:YES completion:nil];
- } else {
- 
- }
+    //sets win alert and resets to play again
+    UIAlertController *whoWon = [UIAlertController alertControllerWithTitle:@"You Won" message:(@"%c", [sender titleForState:[sender state]]) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *playAgain = [UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.button1 setTitle:@" " forState:UIControlStateNormal];
+        [self.button2 setTitle:@"  " forState:UIControlStateNormal];
+        [self.button3 setTitle:@"   " forState:UIControlStateNormal];
+        [self.button4 setTitle:@"    " forState:UIControlStateNormal];
+        [self.button5 setTitle:@"     " forState:UIControlStateNormal];
+        [self.button6 setTitle:@"      " forState:UIControlStateNormal];
+        [self.button7 setTitle:@"       " forState:UIControlStateNormal];
+        [self.button8 setTitle:@"        " forState:UIControlStateNormal];
+        [self.button9 setTitle:@"         " forState:UIControlStateNormal];
+    }];
+    [whoWon addAction:playAgain];
 
     
-
-    
-    
-    
-    //self.Button1.titleLabel.text == self.Button2.titleLabel.text == self.Button3.titleLabel.text
-    
+    //defines win conditions and presents alert when won
+    if (       [[self getButtonTitle:self.button1] isEqualToString:[self getButtonTitle:self.button2]]
+            && [[self getButtonTitle:self.button2] isEqualToString:[self getButtonTitle:self.button3]]){
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button4] isEqualToString:[self getButtonTitle:self.button5]]
+            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button6]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button7] isEqualToString:[self getButtonTitle:self.button8]]
+            && [[self getButtonTitle:self.button8] isEqualToString:[self getButtonTitle:self.button9]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button1] isEqualToString:[self getButtonTitle:self.button5]]
+            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button9]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button3] isEqualToString:[self getButtonTitle:self.button5]]
+            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button7]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button1] isEqualToString:[self getButtonTitle:self.button4]]
+            && [[self getButtonTitle:self.button4] isEqualToString:[self getButtonTitle:self.button7]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button2] isEqualToString:[self getButtonTitle:self.button5]]
+            && [[self getButtonTitle:self.button5] isEqualToString:[self getButtonTitle:self.button8]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else if ([[self getButtonTitle:self.button3] isEqualToString:[self getButtonTitle:self.button6]]
+            && [[self getButtonTitle:self.button6] isEqualToString:[self getButtonTitle:self.button9]]) {
+                    [self presentViewController:whoWon animated:YES completion:nil];
+    } else {
+        
+    }
     
 }
+
+
 
 
 @end
