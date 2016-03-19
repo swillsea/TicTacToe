@@ -13,6 +13,7 @@
 		22F9F83F1C9B5E86005F634D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F9F83D1C9B5E86005F634D /* Main.storyboard */; };
 		22F9F8411C9B5E86005F634D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F9F8401C9B5E86005F634D /* Assets.xcassets */; };
 		22F9F8441C9B5E86005F634D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F9F8421C9B5E86005F634D /* LaunchScreen.storyboard */; };
+		22F9F8731C9CC207005F634D /* Gridbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F9F8721C9CC207005F634D /* Gridbox.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		22F9F8401C9B5E86005F634D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22F9F8431C9B5E86005F634D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22F9F8451C9B5E86005F634D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22F9F8711C9CC207005F634D /* Gridbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gridbox.h; sourceTree = "<group>"; };
+		22F9F8721C9CC207005F634D /* Gridbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gridbox.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				22F9F83A1C9B5E86005F634D /* ViewController.h */,
 				22F9F83B1C9B5E86005F634D /* ViewController.m */,
+				22F9F8711C9CC207005F634D /* Gridbox.h */,
+				22F9F8721C9CC207005F634D /* Gridbox.m */,
 				22F9F83D1C9B5E86005F634D /* Main.storyboard */,
 				22F9F8401C9B5E86005F634D /* Assets.xcassets */,
 				22F9F8421C9B5E86005F634D /* LaunchScreen.storyboard */,
@@ -153,6 +158,7 @@
 				22F9F83C1C9B5E86005F634D /* ViewController.m in Sources */,
 				22F9F8391C9B5E86005F634D /* AppDelegate.m in Sources */,
 				22F9F8361C9B5E86005F634D /* main.m in Sources */,
+				22F9F8731C9CC207005F634D /* Gridbox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +305,7 @@
 				22F9F84A1C9B5E86005F634D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

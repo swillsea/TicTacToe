@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Gridbox.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *button1;
@@ -21,6 +22,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property BOOL playerOneTurn;
+@property NSMutableArray *masterArray;
+@property int gridSize;
+
 
 
 @end
@@ -30,6 +34,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.playerOneTurn = YES;
+    
+    self.gridSize = 2;
+    Gridbox *gridbox = [[Gridbox alloc] init];
+    NSMutableArray *smallArray;
+    
+    for ( int y = 0; y <= self.gridSize; y++) {
+        
+        for (int x = 0; x <= self.gridSize; x++) {
+            
+            gridbox.posX = x;
+            gridbox.posY = y;
+            gridbox.value = nil;
+            
+            [smallArray addObject:gridbox];
+            NSLog(@"%i %i %@", gridbox.posX, gridbox.posY, gridbox.value);
+        }
+        
+        [self.masterArray addObject:smallArray];
+    }
+    
+    
 }
 
 //creates method to give win condition comparison neater code
@@ -52,7 +77,56 @@
         self.playerOneTurn = YES;
         self.whichPlayerLabel.text = @"O";
     }
+   
     
+    //rowWins
+    
+    for (int i = 0; i <= self.gridSize; i++) {
+        
+        
+        for (int j = 0; j <= self.gridSize; i++) {
+            (int) self.masterArray[i][i].x;
+            
+            
+        }
+    }
+    
+    //columnWins
+    
+    
+    //backSlashWins
+    
+    
+    //forwardSlashWins
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+/*
     
     //sets win alert and resets to play again
     UIAlertController *whoWon = [UIAlertController alertControllerWithTitle:@"You Won" message:(@"%c", [sender titleForState:[sender state]]) preferredStyle:UIAlertControllerStyleAlert];
@@ -99,7 +173,13 @@
         
     }
     
-}
+
+
+
+
+
+
+*/
 
 
 
